@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - SMS Spam Detector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="url(#navGrad3)"/>
+          <defs><linearGradient id="navGrad3" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs>
+        </svg>
+        <span>SpamShield</span>
+        <span class="nav-badge">AI</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Detector</a>
+      <a href="/analytics" class="nav-link">Analytics</a>
+      <a href="/about" class="nav-link active">About</a>
+    </div>
+  </nav>
+
+  <section class="hero analytics-hero">
+    <div class="hero-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+    <div class="hero-content">
+      <div class="hero-badge"><span class="pulse-dot"></span>Machine Learning Project</div>
+      <h1 class="hero-title">About <span class="gradient-text">SpamShield AI</span></h1>
+      <p class="hero-subtitle">End-to-end SMS spam detection using NLP and classical ML</p>
+    </div>
+  </section>
+
+  <main class="main-container">
+    <!-- Overview -->
+    <div class="about-grid">
+      <div class="about-card glass-card">
+        <div class="about-card-icon">🎯</div>
+        <h3>Project Goal</h3>
+        <p>Build a robust SMS Spam Detector that accurately classifies messages as spam or legitimate (ham) using Natural Language Processing and Machine Learning techniques.</p>
+      </div>
+      <div class="about-card glass-card">
+        <div class="about-card-icon">📊</div>
+        <h3>Dataset</h3>
+        <p>Trained on the UCI SMS Spam Collection dataset containing 5,574 real SMS messages, labeled as ham (legitimate) or spam. Class imbalance handled during evaluation.</p>
+      </div>
+      <div class="about-card glass-card">
+        <div class="about-card-icon">🔬</div>
+        <h3>Approach</h3>
+        <p>TF-IDF vectorization with n-grams (1,2) combined with four classical ML classifiers. Best model selected based on F1-Score to handle class imbalance.</p>
+      </div>
+      <div class="about-card glass-card">
+        <div class="about-card-icon">🚀</div>
+        <h3>Deployment</h3>
+        <p>Flask web app with a real-time prediction API, interactive analytics dashboard, and feature transparency panel showing why a message was flagged.</p>
+      </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tech-section glass-card">
+      <h2 class="section-title">🛠️ Technology Stack</h2>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <span class="tech-logo">🐍</span>
+          <div><strong>Python 3.10+</strong><p>Core language</p></div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-logo">🤖</span>
+          <div><strong>scikit-learn</strong><p>ML algorithms</p></div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-logo">📝</span>
+          <div><strong>NLTK</strong><p>Text preprocessing</p></div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-logo">🐼</span>
+          <div><strong>pandas</strong><p>Data manipulation</p></div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-logo">🔢</span>
+          <div><strong>NumPy</strong><p>Numerical computing</p></div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-logo">🌐</span>
+          <div><strong>Flask</strong><p>Web framework</p></div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-logo">📈</span>
+          <div><strong>Chart.js</strong><p>Visualizations</p></div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-logo">📓</span>
+          <div><strong>Jupyter</strong><p>Exploration & EDA</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ML Models -->
+    <div class="models-section glass-card">
+      <h2 class="section-title">🤖 ML Models Used</h2>
+      <div class="models-list">
+        <div class="model-item">
+          <div class="model-header">
+            <span class="model-badge nb">NB</span>
+            <h3>Naive Bayes (Multinomial)</h3>
+          </div>
+          <p>Classic probabilistic classifier that applies Bayes theorem with the naive assumption of independence. Extremely fast and effective for text classification. Uses word frequency features.</p>
+          <div class="model-tags"><span>Fast</span><span>Probabilistic</span><span>Baseline</span></div>
+        </div>
+        <div class="model-item">
+          <div class="model-header">
+            <span class="model-badge lr">LR</span>
+            <h3>Logistic Regression</h3>
+          </div>
+          <p>Linear model for binary classification using the logistic (sigmoid) function. Excellent regularization with L2 penalty. Provides probability estimates and highly interpretable coefficients.</p>
+          <div class="model-tags"><span>Interpretable</span><span>Regularized</span><span>Efficient</span></div>
+        </div>
+        <div class="model-item">
+          <div class="model-header">
+            <span class="model-badge svm">SVM</span>
+            <h3>Support Vector Machine</h3>
+          </div>
+          <p>Finds the optimal hyperplane maximizing margin between classes. Linear kernel with calibrated probabilities. Excellent performance on high-dimensional text feature spaces.</p>
+          <div class="model-tags"><span>High-Dimensional</span><span>Max-Margin</span><span>Robust</span></div>
+        </div>
+        <div class="model-item">
+          <div class="model-header">
+            <span class="model-badge rf">RF</span>
+            <h3>Random Forest</h3>
+          </div>
+          <p>Ensemble of 200 decision trees using bagging and random feature selection. Highly resistant to overfitting. Provides feature importance scores for model interpretability.</p>
+          <div class="model-tags"><span>Ensemble</span><span>Bagging</span><span>Feature Importance</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipeline -->
+    <div class="pipeline-section glass-card">
+      <h2 class="section-title">⚙️ ML Pipeline</h2>
+      <div class="pipeline-steps">
+        <div class="pipe-step"><span class="pipe-num">1</span><div><strong>Raw SMS Text</strong><p>Input message from user</p></div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span class="pipe-num">2</span><div><strong>Text Cleaning</strong><p>Lowercase, URL/phone removal, punctuation strip</p></div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span class="pipe-num">3</span><div><strong>Tokenization</strong><p>Word tokenization via NLTK</p></div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span class="pipe-num">4</span><div><strong>Stop Words + Stemming</strong><p>Remove common words, reduce to root form</p></div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span class="pipe-num">5</span><div><strong>TF-IDF Vectorization</strong><p>10K features, bigrams, sublinear TF</p></div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span class="pipe-num">6</span><div><strong>Classification</strong><p>Best ML model predicts spam/ham</p></div></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>SpamShield AI &copy; 2024 &mdash; ML Project &mdash; Built with Flask + scikit-learn</p>
+  </footer>
+</body>
+</html>

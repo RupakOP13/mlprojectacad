@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics - SMS Spam Detector</title>
+  <meta name="description" content="Model performance analytics for the SMS Spam Detector ML project." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="url(#navGrad2)"/>
+          <defs><linearGradient id="navGrad2" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs>
+        </svg>
+        <span>SpamShield</span>
+        <span class="nav-badge">AI</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Detector</a>
+      <a href="/analytics" class="nav-link active">Analytics</a>
+      <a href="/about" class="nav-link">About</a>
+    </div>
+  </nav>
+
+  <div class="analytics-hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge"><span class="pulse-dot"></span>Model Performance</div>
+      <h1 class="hero-title">Analytics <span class="gradient-text">Dashboard</span></h1>
+      <p class="hero-subtitle">Detailed performance metrics for all trained models</p>
+    </div>
+  </div>
+
+  <main class="main-container" id="analyticsMain">
+    <!-- Loading State -->
+    <div id="loadingState" class="loading-state glass-card">
+      <div class="loading-spinner-large"></div>
+      <p>Loading model analytics...</p>
+    </div>
+
+    <!-- Stats Overview -->
+    <div id="statsRow" class="stats-row" style="display:none">
+      <div class="stat-box glass-card">
+        <div class="stat-box-icon">🏆</div>
+        <div class="stat-box-value" id="bestModelName">—</div>
+        <div class="stat-box-label">Best Model</div>
+      </div>
+      <div class="stat-box glass-card">
+        <div class="stat-box-icon">📨</div>
+        <div class="stat-box-value" id="totalSamples">—</div>
+        <div class="stat-box-label">Total Samples</div>
+      </div>
+      <div class="stat-box glass-card">
+        <div class="stat-box-icon">🚫</div>
+        <div class="stat-box-value" id="spamCount">—</div>
+        <div class="stat-box-label">Spam Messages</div>
+      </div>
+      <div class="stat-box glass-card">
+        <div class="stat-box-icon">✅</div>
+        <div class="stat-box-value" id="hamCount">—</div>
+        <div class="stat-box-label">Ham Messages</div>
+      </div>
+    </div>
+
+    <!-- Model Comparison Table -->
+    <div id="comparisonSection" class="analytics-section glass-card" style="display:none">
+      <h2 class="section-title">📊 Model Comparison</h2>
+      <div class="table-wrapper">
+        <table class="metrics-table" id="metricsTable">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Accuracy</th>
+              <th>Precision</th>
+              <th>Recall</th>
+              <th>F1 Score</th>
+              <th>ROC-AUC</th>
+            </tr>
+          </thead>
+          <tbody id="metricsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div id="chartsSection" class="charts-grid" style="display:none">
+      <div class="chart-card glass-card">
+        <h3>Model Accuracy Comparison</h3>
+        <div class="chart-wrapper"><canvas id="accuracyChart"></canvas></div>
+      </div>
+      <div class="chart-card glass-card">
+        <h3>F1 Score Comparison</h3>
+        <div class="chart-wrapper"><canvas id="f1Chart"></canvas></div>
+      </div>
+      <div class="chart-card glass-card">
+        <h3>Dataset Distribution</h3>
+        <div class="chart-wrapper"><canvas id="distChart"></canvas></div>
+      </div>
+      <div class="chart-card glass-card">
+        <h3>All Metrics Radar</h3>
+        <div class="chart-wrapper"><canvas id="radarChart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Confusion Matrix Section -->
+    <div id="cmSection" class="analytics-section glass-card" style="display:none">
+      <h2 class="section-title">🎯 Confusion Matrices</h2>
+      <div id="cmGrid" class="cm-grid"></div>
+    </div>
+
+    <!-- Error State -->
+    <div id="errorState" class="error-state glass-card" style="display:none">
+      <div class="error-icon">⚠️</div>
+      <h3>Model Not Trained</h3>
+      <p>Run <code>python train.py</code> to train models and view analytics.</p>
+      <a href="/" class="analyze-btn" style="display:inline-flex;margin-top:1rem">Go to Detector</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>SpamShield AI &copy; 2024 &mdash; ML Project &mdash; Built with Flask + scikit-learn</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+</body>
+</html>
